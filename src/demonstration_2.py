@@ -43,6 +43,8 @@ Explanation:
 Note that 'B' and 'b' are treated as two different characters.
 ```
 """
+from collections import Counter
+
 def frequency_sort(s: str) -> str:
     """
     Inputs:
@@ -52,5 +54,13 @@ def frequency_sort(s: str) -> str:
     str
     """
     # Your code here
+    counted_s = Counter(s)
+    sorted_letters = sorted(counted_s.items(), key=lambda kv: -kv[1])
+    print(sorted_letters)
+    string = ""
+    for letter, value in sorted_letters:
+        letters = letter * value
+        string += letters
+    return string 
 
-    
+print(frequency_sort('freefreee free'))
